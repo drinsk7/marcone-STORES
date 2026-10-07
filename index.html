@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Marcone Store</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+
+        <nav class="navbar">
+
+            <div class="logo">
+                MARCONE<span> STORE</span>
+            </div>
+
+            <button class="cart-button" onclick="abrirCarrinho()">
+                🛒 Carrinho
+                <span id="contador">0</span>
+            </button>
+
+        </nav>
+
+        <div class="hero">
+
+            <p class="mini-title">BEM-VINDO À</p>
+
+            <h1>MARCONE</h1>
+
+            <h2>STORE</h2>
+
+            <p>
+                Benefícios exclusivos, VIPs e vantagens
+                para sua experiência no servidor.
+            </p>
+
+            <a href="#produtos" class="botao">
+                VER PRODUTOS
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- PRODUTOS -->
+    <section id="produtos" class="produtos-section">
+
+        <div class="titulo-section">
+
+            <p>LOJA OFICIAL</p>
+
+            <h2>ESCOLHA SEU PRODUTO</h2>
+
+            <span>
+                Adicione ao carrinho e abra seu ticket para realizar o pagamento.
+            </span>
+
+        </div>
+
+
+        <div class="produtos">
+
+            <!-- VIP MARCONE -->
+            <div class="produto destaque">
+
+                <div class="icone">👑</div>
+
+                <h3>VIP MARCONE</h3>
+
+                <div class="preco">$15</div>
+
+                <ul>
+                    <li>✓ Muitos benefícios</li>
+                    <li>✓ Atendimento diferenciado</li>
+                    <li>✓ XFAC ON</li>
+                    <li>✓ Benefícios exclusivos</li>
+                </ul>
+
+                <button onclick="adicionarProduto('VIP MARCONE', 15)">
+                    ADICIONAR AO CARRINHO
+                </button>
+
+            </div>
+
+
+            <!-- VIP BÁSICO -->
+            <div class="produto">
+
+                <div class="icone">⭐</div>
+
+                <h3>VIP BÁSICO</h3>
+
+                <div class="preco">$3</div>
+
+                <ul>
+                    <li>✓ Benefício básico</li>
+                    <li>✓ REC sem perguntas</li>
+                    <li>✓ Atendimento pelo ticket</li>
+                    <li>✓ Entrega organizada</li>
+                </ul>
+
+                <button onclick="adicionarProduto('VIP BÁSICO', 3)">
+                    ADICIONAR AO CARRINHO
+                </button>
+
+            </div>
+
+
+            <!-- PRÊMIO MARCONE -->
+            <div class="produto premium">
+
+                <div class="icone">💎</div>
+
+                <h3>PRÊMIO MARCONE</h3>
+
+                <div class="preco">$30</div>
+
+                <ul>
+                    <li>✓ Cargo exclusivo</li>
+                    <li>✓ REC sem perguntas</li>
+                    <li>✓ Cargo de destaque na fac</li>
+                    <li>✓ Benefícios premium</li>
+                </ul>
+
+                <button onclick="adicionarProduto('PRÊMIO MARCONE', 30)">
+                    ADICIONAR AO CARRINHO
+                </button>
+
+            </div>
+
+
+            <!-- VIP XFAC -->
+            <div class="produto">
+
+                <div class="icone">⚡</div>
+
+                <h3>VIP XFAC</h3>
+
+                <div class="preco">$10</div>
+
+                <ul>
+                    <li>✓ XFAC para você</li>
+                    <li>✓ XFAC ON</li>
+                    <li>✓ Atendimento pelo ticket</li>
+                    <li>✓ Suporte da equipe</li>
+                </ul>
+
+                <button onclick="adicionarProduto('VIP XFAC', 10)">
+                    ADICIONAR AO CARRINHO
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMO COMPRAR -->
+    <section class="como-comprar">
+
+        <h2>COMO COMPRAR?</h2>
+
+        <div class="passos">
+
+            <div>
+                <strong>01</strong>
+                <h3>ESCOLHA</h3>
+                <p>Escolha seu produto.</p>
+            </div>
+
+            <div>
+                <strong>02</strong>
+                <h3>CARRINHO</h3>
+                <p>Coloque o produto no carrinho.</p>
+            </div>
+
+            <div>
+                <strong>03</strong>
+                <h3>TICKET</h3>
+                <p>Entre no Discord e abra um ticket.</p>
+            </div>
+
+            <div>
+                <strong>04</strong>
+                <h3>ENTREGA</h3>
+                <p>Envie seu pedido e aguarde a equipe.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MODAL DO CARRINHO -->
+    <div id="modalCarrinho" class="modal">
+
+        <div class="carrinho">
+
+            <button class="fechar" onclick="fecharCarrinho()">
+                ×
+            </button>
+
+            <h2>🛒 SEU CARRINHO</h2>
+
+            <div id="listaCarrinho"></div>
+
+            <div class="total">
+                TOTAL:
+                <strong id="total">$0</strong>
+            </div>
+
+
+            <!-- COPIAR PEDIDO -->
+            <div class="pedido">
+
+                <h3>📋 PRODUTO PARA ENTREGA</h3>
+
+                <p>
+                    Copie o pedido e envie dentro do seu ticket.
+                </p>
+
+                <textarea id="pedidoTexto" readonly></textarea>
+
+                <button onclick="copiarPedido()" class="copiar">
+                    📋 COPIAR PRODUTO
+                </button>
+
+            </div>
+
+
+            <!-- DISCORD -->
+            <a
+                href="https://discord.gg/8Ut8UrdN4s"
+                target="_blank"
+                class="discord"
+            >
+                🎫 ABRIR DISCORD / PAGAMENTO
+            </a>
+
+            <p class="aviso">
+                Entre no Discord, abra um ticket e siga as instruções da equipe.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <div class="logo">
+            MARCONE<span> STORE</span>
+        </div>
+
+        <p>
+            Loja oficial Marcone.
+        </p>
+
+        <a
+            href="https://discord.gg/8Ut8UrdN4s"
+            target="_blank"
+        >
+            ENTRAR NO DISCORD
+        </a>
+
+        <small>
+            © 2026 Marcone Store
+        </small>
+
+    </footer>
+
+
+    <div id="notificacao" class="notificacao">
+        Produto adicionado ao carrinho!
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
